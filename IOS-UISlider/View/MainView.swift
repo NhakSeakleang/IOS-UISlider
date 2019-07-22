@@ -33,6 +33,7 @@ class MainView: UIView {
         slider = UISlider()
         slider.minimumValue = 0
         slider.maximumValue = 10
+        slider.minimumTrackTintColor = .blue
         
         // lbValue
         lbValue = UILabel()

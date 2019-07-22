@@ -41,12 +41,23 @@ class ViewController: UIViewController {
     func setUpEvent() {
         
         // slider
-        mainView.slider.addTarget(self, action: #selector(sliderValueChange(_:)), for: .valueChanged)
+        mainView.slider.addTarget(self, action: #selector(sliderWithStepValueChange(_:)), for: .valueChanged)
         
     }
     
     @objc func sliderValueChange(_ slider: UISlider) {
         
+        print("Stepper Value: \(slider.value)")
+        mainView.lbValue.text = "\(Int(slider.value))"
+        
+    }
+    
+    @objc func sliderWithStepValueChange(_ slider: UISlider) {
+        
+        let step: Float = 1
+        let interval: Float = step / 2
+        
+        slider.setValue((Float)((Int)((slider.value + interval) / step) * Int(step)), animated: false)
         print("Stepper Value: \(slider.value)")
         mainView.lbValue.text = "\(Int(slider.value))"
         
